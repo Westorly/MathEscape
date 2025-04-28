@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.y = movementDirectionY;
 
         // Apply crouching
-        if (Input.GetKey(KeyCode.LeftControl) && canMove)
+        if (Input.GetKey(KeyCode.LeftShift) && canMove)
         {
             characterController.height = crouchHeight;
             walkSpeed = crouchSpeed;
