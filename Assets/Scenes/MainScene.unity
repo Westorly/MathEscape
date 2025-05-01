@@ -2729,41 +2729,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2541284311274176729, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541284311274176729, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541284311274176729, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541284311274176729, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541284311274176729, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3610436439578743865, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: m_Name
-      value: PlayerBody
-      objectReference: {fileID: 0}
-    - target: {fileID: 5037173721795606750, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5239434882389687009, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5239434882389687009, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.56
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5239434882389687009, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2796,14 +2768,6 @@ PrefabInstance:
     - target: {fileID: 5239434882389687009, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457153236886529224, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: walkSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457153236886529224, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-      propertyPath: crouchSpeed
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
