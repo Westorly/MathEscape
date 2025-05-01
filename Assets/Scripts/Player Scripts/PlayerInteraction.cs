@@ -3,15 +3,18 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public float playerReach = 3f;
-    Interactable currentInterable;
+    Interactable currentInteractable;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && currentInterable != null)  //Venstre click
+        CheckInteration();
+        /*
+        if (Input.GetKeyDown(KeyCode.Mouse0) && currentInteractable != null)  //Venstre click
         {
-            currentInterable.Interact();
+            currentInteractable.Interact();
         }
+        */
     }
 
     void CheckInteration()
@@ -25,9 +28,9 @@ public class PlayerInteraction : MonoBehaviour
             {
                 Interactable newInteractable = hit.collider.GetComponent<Interactable>();
                 //if there is a currentinterable and it is not the new one
-                if (currentInterable && newInteractable != currentInterable)
+                if (currentInteractable && newInteractable != currentInteractable)
                 {
-                    currentInterable.DisableOutline();
+                    currentInteractable.DisableOutline();
                 }
 
 
@@ -55,17 +58,17 @@ public class PlayerInteraction : MonoBehaviour
 
     void SetNewCurrentInteractable(Interactable newInteractable)
     {
-        currentInterable = newInteractable;
-        currentInterable.EnableOutline();
+        currentInteractable = newInteractable;
+        currentInteractable.EnableOutline();
 
     }
 
     void DisableCurrentInteractable()
     {
-        if (currentInterable)
+        if (currentInteractable)
         {
-            currentInterable.DisableOutline();
-            currentInterable = null;
+            currentInteractable.DisableOutline();
+            currentInteractable = null;
         }
     }
 }
