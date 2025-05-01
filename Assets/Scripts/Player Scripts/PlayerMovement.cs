@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && canMove)
         {
             characterController.height = crouchHeight;
-            characterController.center = new Vector3(0, crouchHeight / 2f, 0); 
+            
             walkSpeed = crouchSpeed;
         }
         else
