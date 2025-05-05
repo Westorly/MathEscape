@@ -1178,17 +1178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860278ef6789c47068258cda739dcaf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TopicTriBool: 0
-  TopicAlgeBool: 0
-  TopicFunkBool: 0
-  TopicDiffBool: 0
-  TopicVekBool: 0
-  checkmarkImage: {fileID: 0}
-  topicTriButton: {fileID: 0}
-  topicAlgeButton: {fileID: 0}
-  topicFunkButton: {fileID: 0}
-  topicDiffButton: {fileID: 0}
-  topicVekButton: {fileID: 0}
 --- !u!1 &448069745
 GameObject:
   m_ObjectHideFlags: 0
