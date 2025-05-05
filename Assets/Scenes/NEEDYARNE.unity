@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 402396295}
   m_Layer: 0
-  m_Name: "Ledetr\xE5de"
+  m_Name: "Ledetr\xE5de 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,7 +278,7 @@ Transform:
   m_GameObject: {fileID: 402396294}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.289528, y: 1.2921076, z: 3.35415}
+  m_LocalPosition: {x: 8.042, y: 1.2921076, z: 3.703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2057,7 +2057,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3df7baa39a984814583aa4a2a14e6eb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
