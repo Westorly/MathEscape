@@ -82,18 +82,27 @@ public class Pickup : MonoBehaviour
 
     private void Hold()
     {
-        distance = Vector3.Distance(this.transform.position, tempParent.transform.position);
+        // Set a fixed offset relative to the camera or player
+        Vector3 targetPos = tempParent.transform.position + tempParent.transform.forward * 1.5f; // Adjust the multiplier for the right distance
 
+        // Calculate the distance and drop if too far
+        distance = Vector3.Distance(this.transform.position, targetPos);
         if (distance >= maxDistance)
         {
             Drop();
         }
 
+        // Smoothly move towards the target position (camera's forward direction)
+        float speed = 10f; // Adjust to control how fast the object follows the target
+        this.transform.position = Vector3.Lerp(this.transform.position, targetPos, Time.deltaTime * speed);
+
+        // Throw the object when the Q key is pressed
         if (Input.GetKeyDown(KeyCode.Q) && isHolding)
         {
             Throw();
         }
     }
+
 
     private void Drop()
     {
@@ -117,6 +126,7 @@ public class Pickup : MonoBehaviour
         isHolding = false;
 
         // Apply the throw force in the direction the parent (usually camera or player) is facing
+        Vector3 throwDirection = (tempParent.transform.forward + Vector3.up).normalized;
         rb.AddForce(tempParent.transform.forward * throwForce);
     }
 
