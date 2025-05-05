@@ -85,7 +85,7 @@ public class Pickup : MonoBehaviour
     private void Hold()
     {
         
-        Vector3 targetPos = tempParent.transform.position + tempParent.transform.forward * 1.5f; // Adjust the multiplier for the right distance
+        Vector3 targetPos = tempParent.transform.position + tempParent.transform.forward * 1.5f; 
 
         // Calculate the distance and drop if too far
         distance = Vector3.Distance(this.transform.position, targetPos);
@@ -95,7 +95,7 @@ public class Pickup : MonoBehaviour
         }
 
         // Smoothly move towards the target position (camera's forward direction)
-        float speed = 10f; // Adjust to control how fast the object follows the target
+        float speed = 5f; // Adjust to control how fast the object follows the target
         this.transform.position = Vector3.Lerp(this.transform.position, targetPos, Time.deltaTime * speed);
 
         // Throw the object when the Q key is pressed
