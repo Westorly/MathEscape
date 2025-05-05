@@ -1189,6 +1189,7 @@ GameObject:
   - component: {fileID: 448069748}
   - component: {fileID: 448069747}
   - component: {fileID: 448069746}
+  - component: {fileID: 448069750}
   - component: {fileID: 448069749}
   m_Layer: 0
   m_Name: EventSystem
@@ -1268,6 +1269,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bc3d9de591504c77b0a9a64629c6496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &448069750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448069745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dace6d6ec83263d4db5b869caf00eca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &506386596
@@ -1366,6 +1379,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 448069750}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: trigo
+          m_BoolArgument: 1
+        m_CallState: 1
 --- !u!114 &506386599
 MonoBehaviour:
   m_ObjectHideFlags: 0
