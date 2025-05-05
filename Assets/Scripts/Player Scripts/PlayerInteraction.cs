@@ -9,12 +9,12 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         CheckInteration();
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Mouse0) && currentInteractable != null)  //Venstre click
         {
             currentInteractable.Interact();
         }
-        */
+        
     }
 
     void CheckInteration()
