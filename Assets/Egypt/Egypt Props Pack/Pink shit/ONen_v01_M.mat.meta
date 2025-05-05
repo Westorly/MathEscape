@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream
+guid: 933a01682df1b43c0873d32f9e96e86c
+=======
+guid: a53631e52ff16d042a24187e5458098f
+>>>>>>> Stashed changes
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303953
+  packageName: Evironment Pack - Egypt Props
+  packageVersion: 0.0.1
+  assetPath: Assets/DuNguyn/Egypt Props Pack/Materials/ONen_v01_M.mat
+  uploadId: 717027

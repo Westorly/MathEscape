@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream
+guid: 8432d91dc350741aa84c67634cb4e2d5
+=======
+guid: f33f7486b64081c41a7e016452138cd6
+>>>>>>> Stashed changes
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303953
+  packageName: Evironment Pack - Egypt Props
+  packageVersion: 0.0.1
+  assetPath: Assets/DuNguyn/Egypt Props Pack/Materials/NhaChinh_Sach_M.mat
+  uploadId: 717027

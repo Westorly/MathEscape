@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream
+guid: cd9bb984a17b24870ba413c5a77b001b
+=======
+guid: 9e096ac9fbb72ae4caff3e407f3947f5
+>>>>>>> Stashed changes
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303953
+  packageName: Evironment Pack - Egypt Props
+  packageVersion: 0.0.1
+  assetPath: Assets/DuNguyn/Egypt Props Pack/Materials/SkyBox_M.mat
+  uploadId: 717027
