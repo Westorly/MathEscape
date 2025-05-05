@@ -74,15 +74,17 @@ public class Pickup : MonoBehaviour
         DisableHighlight();
     }
 
-    private void OnMouseEnter()
-    {
-        // Highlight the object when the mouse enters
-        EnableHighlight();
+    private void OnMouseEnter(){
+        // Only highlight if the object is within reach
+        distance = Vector3.Distance(this.transform.position, tempParent.transform.position);
+        if (distance <= maxDistance){
+            EnableHighlight();
+        }
     }
 
     private void Hold()
     {
-        // Set a fixed offset relative to the camera or player
+        
         Vector3 targetPos = tempParent.transform.position + tempParent.transform.forward * 1.5f; // Adjust the multiplier for the right distance
 
         // Calculate the distance and drop if too far
