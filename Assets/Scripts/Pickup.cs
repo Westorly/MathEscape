@@ -7,68 +7,134 @@ public class Pickup : MonoBehaviour
     [SerializeField]
     float throwForce = 600f;
     [SerializeField]
-    float minDistance = 3f;
+    float maxDistance = 3f;
     float distance;
 
     TempParent tempParent;
     Rigidbody rb;
     Vector3 objectPos;
-
-    
-    
+    Outline outline; // Reference to Outline component
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         tempParent = TempParent.Instance;
-
-
+        outline = GetComponent<Outline>(); // Get the Outline component
+        if (outline != null)
+        {
+            outline.enabled = false; // Disable outline by default
+        }
+        else
+        {
+            Debug.LogWarning("Outline component not found on " + gameObject.name);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isHolding){
+        if (isHolding)
             Hold();
-        }
-
-        
     }
 
     private void OnMouseDown()
     {
-        //pikcup the object when the mouse is clicked on it
-        if (tempParent != null){
-            isHolding = true;
-            rb.useGravity = false;
-            rb.detectCollisions = false;
+        // Pickup the object when the mouse is clicked on it
+        distance = Vector3.Distance(this.transform.position, tempParent.transform.position);
 
-            this.transform.SetParent(tempParent.transform);
+        if (tempParent != null)
+        {
+            if (distance <= maxDistance)
+            {
+                isHolding = true;
+                rb.useGravity = false;
+                rb.detectCollisions = true;
+                rb.isKinematic = false;
+                this.transform.SetParent(tempParent.transform);
+                DisableHighlight(); // Remove highlight when picked up
+            }
         }
-        else{
+        else
+        {
             Debug.Log("TempParent item not found in the scene");
         }
     }
 
-    private void OnMouseUp(){
-        //release the object when the mouse is released
-        
+    private void OnMouseUp()
+    {
+        // Release the object when the mouse is released
+        Drop();
     }
 
-    private void OnMouseExit(){
-        //release the object when the mouse is released
-       
+    private void OnMouseExit()
+    {
+        // Remove highlight when the mouse exits
+        Drop();
+        DisableHighlight();
     }
 
-    private void Hold(){
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+    private void OnMouseEnter()
+    {
+        // Highlight the object when the mouse enters
+        EnableHighlight();
+    }
 
-        if(Input.GetMouseButtonDown(1)){
-            //throw
+    private void Hold()
+    {
+        distance = Vector3.Distance(this.transform.position, tempParent.transform.position);
+
+        if (distance >= maxDistance)
+        {
+            Drop();
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Q) && isHolding)
+        {
+            Throw();
+        }
     }
 
+    private void Drop()
+    {
+        // Release the object when the mouse is released
+        if (isHolding)
+        {
+            rb.useGravity = true;
+            rb.detectCollisions = true;
+            rb.isKinematic = false;
+            this.transform.SetParent(null);
+            isHolding = false;
+        }
+    }
+
+    private void Throw()
+    {
+        rb.useGravity = true;
+        rb.detectCollisions = true;
+        rb.isKinematic = false;
+        this.transform.SetParent(null);
+        isHolding = false;
+
+        // Apply the throw force in the direction the parent (usually camera or player) is facing
+        rb.AddForce(tempParent.transform.forward * throwForce);
+    }
+
+    // Enable highlight by enabling the Outline component
+    private void EnableHighlight()
+    {
+        if (outline != null)
+        {
+            outline.enabled = true;
+        }
+    }
+
+    // Disable highlight by disabling the Outline component
+    private void DisableHighlight()
+    {
+        if (outline != null)
+        {
+            outline.enabled = false;
+        }
+    }
 }
