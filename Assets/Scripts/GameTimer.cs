@@ -25,6 +25,8 @@ public class GameTimer : MonoBehaviour
 
         // Subscribe to scene load events to detect the "Win" scene
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        Topicmanager.Instance.LogCurrentChoices();
     }
 
     void Update()
