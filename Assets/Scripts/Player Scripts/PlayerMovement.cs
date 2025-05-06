@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public Camera playerCamera;
     public float walkSpeed = 6f;
@@ -20,17 +21,33 @@ public class PlayerMovement : MonoBehaviour
     private bool canMove = true;
     private float originalWalkSpeed;
 
-    void Start()
+
+    public override void OnNetworkSpawn()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         originalWalkSpeed = walkSpeed;
+
+        if (!IsOwner)
+        {
+            canMove = false;
+            GetComponent<Camera>().enabled = false; // Disable camera for non-owner players
+        }
+        
+
+
     }
+    
 
     void Update()
     {
+        if (!IsOwner){
+            return; // Only allow movement for the owner of the object
+        } 
+
+
         Vector3 forward = transform.forward;
         Vector3 right = transform.right;
 
