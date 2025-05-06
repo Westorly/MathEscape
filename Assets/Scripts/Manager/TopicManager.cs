@@ -4,11 +4,11 @@ public class Topicmanager : MonoBehaviour
 {
     public static Topicmanager Instance;
 
-    [SerializeField] bool TrigoChoice = false;
-    [SerializeField] bool AlgeChoice = false;
-    [SerializeField] bool AndenChoice = false;
-    [SerializeField] bool DiffChoice = false;
-    [SerializeField] bool VektorChoice = false;
+    public bool TrigoChoice = false;
+    public bool AlgeChoice = false;
+    public bool AndenChoice = false;
+    public bool DiffChoice = false;
+    public bool VektorChoice = false;
 
     private void Awake()
     {
