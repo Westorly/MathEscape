@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream
+guid: 2282bf3a986614a1193f9687c35c89da
+=======
+guid: 6a4b946a42219324ba0d287412f387a6
+>>>>>>> Stashed changes
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303953
+  packageName: Evironment Pack - Egypt Props
+  packageVersion: 0.0.1
+  assetPath: Assets/DuNguyn/Egypt Props Pack/Prefabs/SM_O_Nen_v2_12.prefab
+  uploadId: 717027
