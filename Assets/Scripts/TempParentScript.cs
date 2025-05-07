@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class TempParent : MonoBehaviour
+public class TempParentScript : MonoBehaviour
 {
-    public static TempParent Instance { get; private set; }
+    public static TempParentScript Instance { get; private set; }
 
     public void Awake(){
         if(Instance == null){
