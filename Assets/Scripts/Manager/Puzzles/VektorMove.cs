@@ -3,16 +3,16 @@ using System.Collections;
 
 public class VektorMove : MonoBehaviour
 {
-    public Vector3 direction = Vector3.right;
-    public float stepSize = 0.3f;
+    public Transform target;              
+    public Vector3 direction = Vector3.up;
+    public float stepSize = 0.2f;
     public float moveDuration = 0.2f;
-    public float waitTime = 0.1f;
 
     private bool isMoving = false;
 
     public void StartMovement()
     {
-        if (!isMoving)
+        if (!isMoving && target != null)
             StartCoroutine(MoveInSteps());
     }
 
@@ -20,19 +20,18 @@ public class VektorMove : MonoBehaviour
     {
         isMoving = true;
 
-        // You can remove the loop if you only want to move once
-        Vector3 start = transform.position;
+        Vector3 start = target.position;
         Vector3 end = start + direction.normalized * stepSize;
         float elapsed = 0f;
 
         while (elapsed < moveDuration)
         {
-            transform.position = Vector3.Lerp(start, end, elapsed / moveDuration);
+            target.position = Vector3.Lerp(start, end, elapsed / moveDuration);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = end;
+        target.position = end;
         isMoving = false;
     }
 }
