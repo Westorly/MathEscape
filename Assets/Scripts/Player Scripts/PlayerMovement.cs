@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+
 public class PlayerMovement : MonoBehaviour
 {
     public Camera playerCamera;
@@ -17,8 +17,11 @@ public class PlayerMovement : MonoBehaviour
     private float rotationX = 0;
     private CharacterController characterController;
 
-    private bool canMove = true;
+    public bool canMove = true;
     private float originalWalkSpeed;
+
+    
+
 
     void Start()
     {
@@ -75,5 +78,12 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+
+        
+
+
     }
+
+    
+
 }
