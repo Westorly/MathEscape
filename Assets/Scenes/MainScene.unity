@@ -6773,7 +6773,6 @@ GameObject:
   m_Component:
   - component: {fileID: 361346801}
   - component: {fileID: 361346800}
-  - component: {fileID: 361346802}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -6810,20 +6809,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &361346802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361346799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f18988751080d344b94cd785ed4c4fba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 486969513}
-  playerMovement: {fileID: 1762851697}
 --- !u!43 &364887429
 Mesh:
   m_ObjectHideFlags: 0
@@ -8130,7 +8115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459170652588621916, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5239434882389687009, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
       propertyPath: m_LocalPosition.x
