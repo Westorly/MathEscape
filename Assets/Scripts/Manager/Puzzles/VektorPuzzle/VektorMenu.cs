@@ -1,5 +1,7 @@
 using TMPro;  // Import the TMP namespace
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class VektorMenu : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class VektorMenu : MonoBehaviour
     public TMP_Text Line4yResult;
     public TMP_Text Line5xResult;
     public TMP_Text Line5yResult;
+
+    public VektorMove vektorMover; 
 
     void Start()
     {
@@ -77,8 +81,8 @@ public class VektorMenu : MonoBehaviour
         // Check if input is empty before parsing
         if (string.IsNullOrEmpty(Line1inputField.text))
         {
-            Line1xResult.text = "0";
-            Line1yResult.text = "0";
+            Line1xResult.text = "?";
+            Line1yResult.text = "?";
             return;
         }
 
@@ -104,8 +108,8 @@ public class VektorMenu : MonoBehaviour
         // Check if input is empty before parsing
         if (string.IsNullOrEmpty(Line2inputField.text))
         {
-            Line2xResult.text = "0";
-            Line2yResult.text = "-1";
+            Line2xResult.text = "?";
+            Line2yResult.text = "?";
             return;
         }
 
@@ -130,8 +134,8 @@ public class VektorMenu : MonoBehaviour
         // Check for empty input in either X or Y field
         if (string.IsNullOrEmpty(Line3xinputField.text) || string.IsNullOrEmpty(Line3yinputField.text))
         {
-            Line3xResult.text = "0";
-            Line3yResult.text = "0";
+            Line3xResult.text = "?";
+            Line3yResult.text = "?";
             return;
         }
 
@@ -158,8 +162,8 @@ public class VektorMenu : MonoBehaviour
         // Check if input is empty before parsing
         if (string.IsNullOrEmpty(Line4inputField.text))
         {
-            Line4xResult.text = "0";
-            Line4yResult.text = "0";
+            Line4xResult.text = "?";
+            Line4yResult.text = "?";
             return;
         }
 
@@ -184,8 +188,8 @@ public class VektorMenu : MonoBehaviour
         // Check if input is empty before parsing
         if (string.IsNullOrEmpty(Line5inputField.text))
         {
-            Line5xResult.text = "0";
-            Line5yResult.text = "-1";
+            Line5xResult.text = "?";
+            Line5yResult.text = "?";
             return;
         }
 
@@ -194,7 +198,7 @@ public class VektorMenu : MonoBehaviour
         {
             // (3, 0) + (input, -1)
             float resultX = 2f - input;
-            float resultY = 0f - 1f;
+            float resultY = 1f - 1f;
 
             Line5xResult.text = resultX.ToString("F0");
             Line5yResult.text = resultY.ToString("F0");
@@ -206,6 +210,32 @@ public class VektorMenu : MonoBehaviour
         }
 
     }
+
+    
+
+    public void StartMovingTarget()
+    {
+        List<Vector3> moves = new List<Vector3>();
+
+        Debug.Log("StartMovingTarget() called — beginning vector movement sequence.");
+
+        // Read all calculated results and build vector list
+        moves.Add(ParseResult(Line1xResult, Line1yResult));
+        moves.Add(ParseResult(Line2xResult, Line2yResult));
+        moves.Add(ParseResult(Line3xResult, Line3yResult));
+        moves.Add(ParseResult(Line4xResult, Line4yResult));
+        moves.Add(ParseResult(Line5xResult, Line5yResult));
+
+        vektorMover.SetMoveSequence(moves);
+    }
+
+    private Vector3 ParseResult(TMP_Text xText, TMP_Text yText)
+    {
+        if (float.TryParse(xText.text, out float x) && float.TryParse(yText.text, out float y))
+            return new Vector3(x, y, 0); // Assuming 2D movement on XZ plane
+        return Vector3.zero;
+    }
+
 
 
 }

@@ -1,56 +1,134 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class VektorMove : MonoBehaviour
 {
-    public Transform target;              // The object to move
-    public float stepSize = 0.2f;         // Distance to move each step
-    public float moveDuration = 0.2f;     // Duration of each step (smooth transition)
+    public Transform target;
+    public GameObject hitEffect;
+    public float moveDuration = 2f;
+    
 
     private bool isMoving = false;
+    private Vector3 initialPosition;
+    private Queue<Vector3> moveQueue = new Queue<Vector3>();
 
-    // Start the movement coroutine
-    public void StartMovement()
+    private void Start()
     {
-        if (!isMoving && target != null)
-            StartCoroutine(MoveInSteps());
+        if (target != null)
+            initialPosition = target.position;
     }
 
-    private IEnumerator MoveInSteps()
+    public void SetMoveSequence(List<Vector3> vectors)
+    {
+        if (isMoving)
+        {
+            Debug.LogWarning("Already moving. Ignoring new sequence until current is done.");
+            return;
+        }
+
+        moveQueue.Clear();
+        foreach (var v in vectors)
+        {
+            // Ensure each move has a magnitude of 0.2
+            Vector3 move = v * 0.2f;
+            moveQueue.Enqueue(move);
+        }
+
+        Debug.Log("Move sequence set:");
+
+
+
+        foreach (var v in moveQueue)
+        {
+            Debug.Log("  Move step: " + v);
+        }
+
+       
+
+        StartCoroutine(ProcessMoves()); 
+        
+
+
+        
+
+        
+    }
+
+    private IEnumerator ProcessMoves()
     {
         isMoving = true;
 
-        // Get the starting position of the object
-        Vector3 start = target.position;
-
-        // Use the local right direction (X-axis) relative to the object’s rotation
-        Vector3 movement = transform.right * stepSize;  // Move in the local X direction
-        Vector3 end = start + movement;
-
-        // Raycast to check if there's a wall in front of the object in its local X direction
-        RaycastHit hit;
-        if (Physics.Raycast(start, transform.right, out hit, stepSize))
+        while (moveQueue.Count > 0)
         {
-            if (hit.collider != null)
-            {
-                // Collision detected with wall, stop movement
-                Debug.Log("Wall detected: " + hit.collider.name);
-                isMoving = false;
-                yield break;  // Stop the movement coroutine
-            }
-        }
+            Vector3 moveDir = moveQueue.Dequeue();
+            Vector3 start = target.position;
+            Vector3 end = start + moveDir;
 
-        // If no collision, continue moving in the local X direction
+            
+
+            // Perform the move smoothly while checking for a collision
+            yield return StartCoroutine(MoveSmoothWithCollisionCheck(start, end, moveDir));
+
+            
+        }
+            
+
+        
+
+        isMoving = false;
+    }
+
+    private IEnumerator MoveSmoothWithCollisionCheck(Vector3 start, Vector3 end, Vector3 moveDir)
+    {
         float elapsed = 0f;
+        Vector3 currentPos = start;
+
         while (elapsed < moveDuration)
         {
-            // Smooth movement from start to end position
-            target.position = Vector3.Lerp(start, end, elapsed / moveDuration);
+            // Lerp the position over time
+            currentPos = Vector3.Lerp(start, end, elapsed / moveDuration);
+
+            // Perform raycasting to check for collisions while moving
+            if (Physics.Raycast(start, moveDir.normalized, (currentPos - start).magnitude))
+            {
+                Debug.LogWarning("Wall hit, resetting to initial position.");
+                StartCoroutine(ActivateEffectTemporarily());
+                yield return StartCoroutine(MoveSmooth(currentPos, initialPosition));
+                isMoving = false;
+                yield break;
+            }
+
+            target.position = currentPos;
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        target.position = end;  // Ensure the target finishes at the final position
-        isMoving = false;
+        // Final position after movement
+        target.position = end;
     }
+
+    private IEnumerator MoveSmooth(Vector3 from, Vector3 to)
+    {
+        float elapsed = 0f;
+        while (elapsed < moveDuration)
+        {
+            target.position = Vector3.Lerp(from, to, elapsed / moveDuration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        target.position = to;
+    }
+
+    
+
+
+    IEnumerator ActivateEffectTemporarily()
+    {
+        hitEffect.SetActive(true);
+        yield return new WaitForSeconds(2f); // Duration before hiding
+        hitEffect.SetActive(false);
+    }
+
+    
 }
