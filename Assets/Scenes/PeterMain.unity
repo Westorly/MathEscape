@@ -237,7 +237,7 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1479370812}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1136,11 +1136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8725d925f27524f499bec5b707febe30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1479370812 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 944356480956337078, guid: fa9b9af4c7d0c554fad3cbc2232035c1, type: 3}
-  m_PrefabInstance: {fileID: 1200674901}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1660219279
 Mesh:
   m_ObjectHideFlags: 0
@@ -1432,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18988751080d344b94cd785ed4c4fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 1479370812}
+  panel: {fileID: 0}
   playerMovement: {fileID: 1413566096}
 --- !u!4 &1969397909
 Transform:
