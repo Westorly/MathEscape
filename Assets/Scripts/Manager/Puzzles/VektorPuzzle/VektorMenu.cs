@@ -232,7 +232,7 @@ public class VektorMenu : MonoBehaviour
     private Vector3 ParseResult(TMP_Text xText, TMP_Text yText)
     {
         if (float.TryParse(xText.text, out float x) && float.TryParse(yText.text, out float y))
-            return new Vector3(x, y, 0); // Assuming 2D movement on XZ plane
+            return new Vector3((-1)*x, y, 0); // Assuming 2D movement on XZ plane
         return Vector3.zero;
     }
 

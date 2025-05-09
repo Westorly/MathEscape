@@ -30,8 +30,8 @@ public class VektorMove : MonoBehaviour
         moveQueue.Clear();
         foreach (var v in vectors)
         {
-            // Ensure each move has a magnitude of 0.2
-            Vector3 move = v * 0.2f;
+            // Ensure each move has a magnitude of 0.3
+            Vector3 move = v * 0.3f;
             moveQueue.Enqueue(move);
         }
 
